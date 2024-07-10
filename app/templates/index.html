@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thegame</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+</head>
+<body>
+    <header>
+        <div class="logo">Thegame</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+		<li><a href="{% url 'categorias' %}">Categorías</a></li>
+		<li><a href="{% url 'soporte' %}">Contáctanos</a></li>
+		<li><a href="{% url 'ayuda'%}">Ayuda</a></li>
+		<li><a href="{% url 'tu' %}">Tú</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Descarga juegos gratis</h1>
+        <div class="search-bar">
+		<input type="text" placeholder="Buscar">  <!--!!!IMPLEMENTAR FUNCIONALIDAD!!!-->
+        </div>
+        <section class="content">
+            <article class="card">
+		 <figure>
+			 <img src="{%static 'img/emulator.png'%}" alt="Emuladores">
+                <p>Descarga tus juegos favoritos de consolas pasadas con nuestros emuladores líderes. Revive la diversión de la infancia en minutos. ¡Explora y disfruta de la nostalgia hoy mismo!</p>
+                <button>Ir</button>
+            </article>
+            <article class="card">
+		    <img src="{%static 'img/indie.png'%}" alt="Juegos Indie">
+                <p>Únete a nuestra plataforma y comparte tus juegos indie de forma gratuita. Haz que tu creatividad brille y llega a jugadores. ¡Súmate a nuestra comunidad de desarrolladores independientes hoy mismo!</p>
+                <button>Ir</button>
+            </article>
+            <article class="card">
+		    <img src="{%static 'img/pygame.png'%}" alt="Juegos Web">
+                <p>Juegos web :)</p>
+                <button>Ir</button>
+		 </figure>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
+
