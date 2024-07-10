@@ -1,0 +1,13 @@
+from django.shortcuts import render
+
+# Create your views here.
+
+from django.http import HttpResponse #para poder hacer una respuesta http
+
+
+def hola(solicitud, username):
+	return HttpResponse("<h1>THEGAME</h1>")
+    print(username)    
+
+def about(solicitud):
+    return HttpResponse("<h1>mamasita la que lo lea</h1>")
