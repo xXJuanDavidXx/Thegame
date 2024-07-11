@@ -9,7 +9,7 @@ urlpatterns = [
     path('help/', views.ayuda, name='ayuda'), 
     path('me/', views.tu, name='tu'),
     path('about/',views.about),
-    path('hola/<str:username>', views.hola)
+    path('hola/<int:id>', views.my_view)
 ]
 
 

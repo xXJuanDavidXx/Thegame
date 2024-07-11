@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.hashers import make_password, check_password
 
 # Create your models here.
 
@@ -39,4 +40,14 @@ class Usuario_Desarollador(models.Model):
 
 
 
- ### class juegos_indie(models.Model)
+ ### class juegos_indie(models.Model) 
+class JuegoIndie(models.Model):
+    titulo = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    desarrollador = models.ForeignKey(Usuario_Desarollador, on_delete=models.CASCADE, related_name='juegos')
+
+    def __str__(self):
+        return self.titulo
+
+
+
