@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+
+<form method="POST"> <!--el metodo post va a permitir que la información ingresada por el usuario no se muestre ne la url-->
+	{% csrf_token %}	
+	{{form.as_p}}
+	
+
+	<button>
+	Singup
+	</button>
+	{{error}}	
+</form>
