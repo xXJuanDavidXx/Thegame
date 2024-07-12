@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Sitio{% endblock %}</title>
+</head>
+
+<body>
+
+<header>
+    {% block header %}
+    {% endblock %}
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Index</a>
+            </li>
+           
+	    <li>
+                <a href="/signup">signup</a>
+            </li>
+            
+            <li>
+                <a href="/login">login</a>
+            </li>
+
+
+
+	    {% if user.is_authenticated %}
+            <li>
+                <a href="/logout">logout</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+
+
+
+    <main>
+        {% block content %}
+        <!-- Contenido de las plantillas hijas -->
+        {% endblock %}
+    </main>
+</body>
+</html>
+
+
