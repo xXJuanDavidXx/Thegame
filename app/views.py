@@ -1,47 +1,60 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect #para redireccionar al usuario
 from django.http import HttpResponse #para poder hacer una respuesta http
 from .models import Consola
 from django.views.generic import TemplateView 
 from django.contrib.auth.forms import UserCreationForm # Importamos esto para crear el apartado de login
 from django.contrib.auth.models import User # importamos esto para guardar los datos pasados por el usuario y registrarlos en el modelo usuario de Django
+from django.contrib.auth import authenticate, login, logout # Para crear la cookie de usuario y para poder cerrar sesión
+from django.db import IntegrityError
+
 # Create your views here.
 
 
 #-----Principal------
 
+#---pagina principal
+
 def index(request):
     return render(request, 'index.html')
 
+#---pagina de registro
+
 def signup(request):
     if request.method == 'GET':
-        # Renderizar el formulario de registro cuando la solicitud es GET
-        return render(request, 'signup.html', {
-            'form': UserCreationForm()  # Llamar al formulario de creación de usuario
-        })
-    
-    # Procesamiento de los datos cuando la solicitud es POST
+        return render(request, 'signup.html', {"form": UserCreationForm})
     else:
-        if request.POST['password1'] == request.POST['password2']:
+
+        if request.POST["password1"] == request.POST["password2"]:
             try:
-                # Crear un nuevo usuario con el nombre de usuario y la contraseña proporcionados
-                usuario = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
-                usuario.save()  # Guardar el usuario en la base de datos
-                return HttpResponse('Usuario creado')
-            except:
-                return render(request, 'signup.html', {
-                    'form': UserCreationForm(),  # Llamar al formulario de creación de usuario
-                    'error': 'Usuario existente'
-                })
-        else:
-            return render(request, 'signup.html', {
-                'form': UserCreationForm(),  # Llamar al formulario de creación de usuario
-                'error': 'Las contraseñas no coinciden.'
-            })
+                user = User.objects.create_user(
+                    request.POST["username"], password=request.POST["password1"])
+                user.save()
+                login(request, user)
+                return redirect('tu')
+            except IntegrityError:
+                return render(request, 'signup.html', {"form": UserCreationForm, "error": "Username already exists."})
+
+        return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
 
 
 
+#---pagina de loggeo el usuario y cerrar sesión--
 
-# ------- segunda -------
+def registro(request):
+    return render(request,'login.html')
+
+def singout(request):
+    logout(request)
+    return redirect('index')
+
+def tu(request):
+    return render(request,'me.html')
+
+
+
+# ------- Parte de juegos retro sin registro de usuario. -------
+
+
 
 def categorias(request):
     return render(request, 'categorias.html')
@@ -52,8 +65,6 @@ def soporte(request):
 def ayuda(request):
     return render(request, 'help.html')
 
-def tu(request):
-    return render(request, 'me.html')
 
 
 

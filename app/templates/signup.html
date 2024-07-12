@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
+
+   
+{% block content %}
+	{{error}}
 
 
 <form method="POST"> <!--el metodo post va a permitir que la información ingresada por el usuario no se muestre ne la url-->
@@ -9,5 +14,6 @@
 	<button>
 	Singup
 	</button>
-	{{error}}	
 </form>
+
+{% endblock %}
