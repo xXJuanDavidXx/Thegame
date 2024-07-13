@@ -72,7 +72,7 @@ def singout(request):
     return redirect('index')
 
 #---pagina del usuario---
-@login_required #hace solo accesible a usuarios con sesión, si no los re dirige al login
+@login_required ##hace solo accesible a usuarios con sesión, si no los re dirige al login
 def tu(request):
     return render(request,'me.html')
 

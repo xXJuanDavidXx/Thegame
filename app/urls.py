@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 
@@ -14,6 +14,7 @@ urlpatterns = [
     path('categorias/', views.categorias, name='categorias'), 
     path('soporte/', views.soporte, name='soporte'), 
     path('help/', views.ayuda, name='ayuda'), 
+    
 
 
 
