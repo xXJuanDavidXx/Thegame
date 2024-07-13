@@ -1,46 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
-	{% extends 'base.html' %}
- <head>
-	<meta charset="UTF-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<title>Thegame</title>
-	{% load static %}
-	<link rel="stylesheet" href="{% static  'css/me.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>usuario</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/me.css' %}">
+</head>
 
 
- </head>
- <body>
-	 {% block header %} 
-        <div class="user-info">
-            <img src="user-photo.jpg" alt="Foto del Usuario" class="user-photo">
-            <span class="user-name">Nombre del Usuario</span>
-        </div>
-   	
-	{% endblock %}
-	
-    {% block content%}
-    <main>
-        <section class="upload-section">
-            <h2>Subir Juego</h2>
-            <form action="#" method="post" enctype="multipart/form-data">
-                <label for="file-upload" class="file-label">Selecciona el archivo del juego</label>
-                <input type="file" id="file-upload" name="file-upload" required>
-                <button type="submit">Subir</button>
-            </form>
-        </section>
-        <section class="uploaded-games">
-            <h2>Juegos Subidos</h2>
-            <ul>
-                <li><a href="#">Juego 1</a></li>
-                <li><a href="#">Juego 2</a></li>
-                <li><a href="#">Juego 3</a></li>
-                <!-- Agrega más juegos según sea necesario -->
-            </ul>
-        </section>
-    </main>
- 
-    {% endblock %}
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'upload' %}">Subir Juegos</a></li>
+            <li><a href="{% url 'mis_juegos' %}">Juegos Subidos</a></li>
+	    <li><a href="{% url 'edit' %}">Editar perfil</a></li>
+        </ul>
+    </nav>
+
 </body>
-</html>
 

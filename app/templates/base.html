@@ -18,22 +18,28 @@
                 <a href="/">Index</a>
             </li>
            
-	    <li>
-                <a href="/signup">signup</a>
-            </li>
             
-            <li>
-                <a href="/login">login</a>
-            </li>
-
-
 
 	    {% if user.is_authenticated %}
             <li>
-                <a href="/logout">logout</a>
+		    <a href="/logout">logout</a>   <!--aqui validamos si el usuario esta autenticado-->
             </li>
-            {% endif %}
-        </ul>
+	    
+	    {% else %}
+
+            <li>
+                <a href="/signup">signup</a>
+            </li>
+							<!--para que si no lo esta se le muestre esto en dunsion de eso--->
+            <li>
+                <a href="/login">login</a>
+            </li>	
+
+
+	    {% endif %}
+        
+
+	</ul>
     </nav>
 </header>
 
