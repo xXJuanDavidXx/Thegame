@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Juegos Subidos</title>
+    <link rel="stylesheet" href="{% static 'Subidos.css' %} "
+</head>
+<body>
+    <h1>Mis Juegos Subidos</h1>
+
+    {% if juegos_usuario %}
+        <ul>
+            {% for juego in juegos_usuario %}
+                <li>
+                    <h2>{{ juego.titulo }}</h2>
+                    <p>{{ juego.descripcion }}</p>
+                    {% if juego.img %}
+                        <img src="{{ juego.img.url }}" alt="{{ juego.titulo }} Imagen">
+                    {% endif %}
+                    <p><a href="{{ juego.archivo.url }}">Descargar Juego</a></p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No has subido ningún juego aún.</p>
+    {% endif %}
+    
+    <p><a href="{% url 'index' %}">Volver al inicio</a></p>
+</body>
+</html>
+
