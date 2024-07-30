@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thegame</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="logo">Thegame</div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'categorias' %}">Categorías</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'soporte' %}">Contáctanos</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'ayuda'%}">Ayuda</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'tu' %}">Entra</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<main class="container my-2 text-center">
+        <h1 class="text-center mb-5">Descarga juegos gratis</h1>
+        <div class="search-bar mb-5">
+            <form action="{% url 'search_view' %}" method="get" class="form-inline justify-content-center">
+                <input type="text" name="q" class="form-control mr-2 w-50" placeholder="Buscar">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+        <section class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+            <article class="col mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/emulator.png' %}" class="card-img-top" alt="Emuladores">
+                    <div class="card-body">
+                        <p class="card-text mt-2">Descarga tus juegos favoritos de consolas pasadas con nuestros emuladores líderes. Revive la diversión de la infancia en minutos. ¡Explora y disfruta de la nostalgia hoy mismo!</p>
+                        <a href="{% url 'categorias' %}" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
+            </article>
+            <article class="col mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/indie.png' %}" class="card-img-top" alt="Juegos Indie">
+                    <div class="card-body">
+                        <p class="card-text">Únete a nuestra plataforma y comparte tus juegos indie de forma gratuita. Haz que tu creatividad brille y llega a jugadores. ¡Súmate a nuestra comunidad de desarrolladores independientes hoy mismo!</p>
+                        <a href="{% url 'tu' %}" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="col mb-4">
+                <div class="card h-100">
+                    <img src="{% static 'img/Juegos_indie.jpg' %}" class="card-img-top" alt="Juegos Indie">
+                    <div class="card-body">
+                        <p class="card-text">Encuentra juegos de desarroladores independientes que decidieron colocar su juego en nuestra plataforma.</p>
+                        <a href="{% url 'indie' %}" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
+            </article>
+
+
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

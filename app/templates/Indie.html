@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Indie{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+        <h2>Lista de Juegos Indie</h2>
+
+        <!-- Itera sobre cada juego indie y muestra la información -->
+        <div class="row">
+            {% for juego in juegos %}
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="width: 100%;">
+                        <!-- Muestra la imagen principal del juego -->
+                        <img src="{{ juego.img.url }}" class="card-img-top" alt="{{ juego.titulo }}">
+                        <div class="card-body">
+                            <!-- Muestra el título del juego -->
+                            <h5 class="card-title">{{ juego.titulo }}</h5>
+                            <!-- Muestra la descripción del juego -->
+                            <p class="card-text">{{ juego.descripcion }}</p>
+                            <!-- Muestra el nombre del desarrollador -->
+                            <p class="card-text">Desarrollador: {{ juego.desarrollador.username }}</p>
+                            <!-- Enlace para descargar el archivo del juego -->
+                            <a href="{{ juego.archivo.url }}" class="btn btn-primary">Descargar Archivo</a>
+                            <!-- Itera sobre las imágenes adicionales del juego -->
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No hay juegos indie registrados en este momento.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <a href="{% url 'index' %}" class="btn btn-primary">Volver</a>
+
+
+{% endblock %}

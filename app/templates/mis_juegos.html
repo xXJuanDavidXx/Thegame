@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Mis Juegos{% endblock %}
+
+{% block content %}
+
+    <h1 class="text-center m-4">Mis Juegos Subidos</h1>
+
+    {% if juegos_usuario %}
+        <div class="game-list">
+	  <div class="row">
+            {% for juego in juegos_usuario %}
+                <div class="col-md-4 mb-4">
+		  <div class="card" style="width: 100%;">
+                    {% if juego.img %}
+                        <img src="{{ juego.img.url }}" alt="{{ juego.titulo }} Imagen">
+               	    {% endif %}
+		    <div class="card-body"> 
+		    <h2>{{ juego.titulo }}</h2>
+                    <p>{{ juego.descripcion }}</p>
+                    <p><a href="{{ juego.archivo.url }}">Descargar Juego</a></p>
+                    </div>
+		  </div>
+		</div>
+            {% endfor %}
+            </div>
+	 </div>
+    {% else %}
+        <p>No has subido ningún juego aún.</p>
+    {% endif %}
+    
+    <p><a href="{% url 'tu' %}" class="btn btn-primary">Volver al perfil</a></p>
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Usuario{% endblock %}
+
+{% block content %}
+
+<main>
+
+<section>
+        <div class="text-center">
+            {% if profile.profile_picture %}
+                <img src="{{ profile.profile_picture.url }}" class="img-thumbnail mb-3" alt="Foto de Perfil">
+		<h3>{{ user.username }}</h3>
+            {% else %}
+                <p>No tienes una foto de perfil aún.</p>
+            {% endif %}
+        </div>	
+	
+	
+</section>
+
+ <div class="row p-3 mb-2 bg-dark text-white">
+      <section class="col-md-4 offset-md-4 mt-5  p-3 mb-2 bg-dark-subtle text-dark-emphasis">
+        <ul class="list-group">
+            <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold"  href="{% url 'index' %}" >Inicio</a></li>
+            <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold"  href="{% url 'upload' %}" >Subir Juegos</a></li>
+            <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold"  href="{% url 'mis_juegos' %}" >Juegos Subidos</a></li>
+	    <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold"  href="{% url 'edit' %}" >Editar perfil</a></li>
+        </ul>
+
+
+
+      </section>
+ </div>
+</main>
+
+
+
+{% endblock %}
+
+

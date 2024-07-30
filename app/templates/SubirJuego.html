@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<main>
+    <section class="upload-form">
+        <h2>Subir Juego Nuevo</h2>
+          <form method="POST" enctype="multipart/form-data" class="">
+	    {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Subir Juego</button>
+        </form>
+    </section>
+</main>
+    <footer>
+        <p>&copy; {% now "Y" %} Subir Juegos Indie. Todos los derechos reservados por supanocha .</p>
+    </footer>
+
+{% endblock %}

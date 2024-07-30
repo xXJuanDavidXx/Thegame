@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <center>
+	<div class="search-bar mb-4">
+            <form action="{% url 'search_view' %}" method="get" class="form-inline justify-content-center">
+                <input type="text" name="q" class="form-control mr-2 w-50" placeholder="Buscar">
+                <button type="submit" class="btn btn-primary ml-3">Buscar</button>
+            </form>
+        </div>
+   </center>
+
+	<h1 class="mb-4"><strong>Resultados de búsqueda para "{{ query }}"</strong></h1>
+
+    {% if results %}
+
+    <div class="container">
+            <div class="row">
+                {% for result in results %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="width: 100%;">
+                            <img src="{{ result.caratula.url }}" alt="{{ result.titulo }}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ result.titulo }}</h5>
+                                <p class="card-text">{{ result.descripcion }}</p>
+                                <a href="{{ result.Descarga.url }}" class="btn btn-primary" download>Descargar</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p>No se encontraron resultados.</p>
+    {% endif %}
+</main>
+{% endblock %}
+

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ consola.consola }} {% endblock %}
+
+
+{% block content %}
+
+    <div class="container mt-5">
+        <h1>Juegos para {{ consola.consola }}</h1>
+        
+        <div class="games-list">
+            <div class="row">
+                {% for juego in juegos %}
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="{{ juego.caratula.url }}" class="card-img-top" alt="{{ juego.titulo }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ juego.titulo }}</h5>
+                            <p class="card-text">{{ juego.descripcion }}</p>
+                            <a href="{{ juego.Descarga.url }}" class="btn btn-primary" download>Descargar</a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12">
+                    <p>No hay juegos disponibles para esta consola.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+   
+    <a href="{% url 'categorias' %}" class="btn btn-primary">Volver a categorías</a>
+
+
+
+
+{% endblock %}
+
+

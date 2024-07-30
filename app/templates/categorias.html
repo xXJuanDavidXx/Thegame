@@ -1,0 +1,67 @@
+{% extends 'base.html' %}   
+
+
+
+{% block title %}Thegame{% endblock %}
+
+ {% load static %}
+{% block content %}
+<main class="p-3">
+        
+  <section class="bg-secondary text-center p-5 border border-primary mb-3">
+      <div class="d-flex justify-content-center align-items-center mb-4">
+          <img src="{% static 'img/categori/Holaque.png' %}" class="img-thumbnail w-25 mx-auto" alt="Emuladores">
+          <div>
+            <figure class="text-center">
+                <blockquote class="blockquote mt-5 ms-5 me-5">
+                    <h1 class="text-primary text-bg-light p-3">Sube tus propios juegos</h1>
+                </blockquote>
+                <figcaption class="blockquote-footer text-bg-dark p-3 ms-3 me-3">
+                    <cite title="Source Title">
+                        Únete a nuestra plataforma y comparte tus juegos indie de forma gratuita. Haz que tu creatividad brille y llegue a jugadores. ¡Súmate a nuestra comunidad de desarrolladores independientes hoy mismo!
+                    </cite>
+                </figcaption>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'upload' %}" class="btn btn-primary">Vamos</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary">Vamos</a>
+                {% endif %}
+            </figure>
+         </div>
+      </div>
+    </section>
+
+        <section class="text-center">
+            <h3 class="text-white mb-4 text-bg-primary p-3">Categories</h3>
+            <div class="row justify-content-center">
+                {% for consola in consolas %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card text-white h-100" style="width: 100%;">
+                            <a href="{% url 'juegos_por_consola' consola.id %}" class="">
+                                <img src="{{ consola.imagen.url }}" class="card-img-top" alt="{{ consola.consola }}">
+                                <div class="card-body">
+                                    <p class="card-text btn btn-primary">{{ consola.consola }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+	
+
+	   <article class="col mb-4">
+                <div class="card text-dark" style="width: 100%;">
+	            <h2 class="text-primary"><strong>Indie<strong></h2>
+                    <img src="{% static 'img/Juegos_indie.jpg' %}" class="card-img-top" alt="Juegos Indie">
+                    <div class="card-body">
+                        <a href="{% url 'indie' %}" class="btn btn-primary">Indie</a>
+                    </div>
+                </div>
+            </article>
+
+
+        </section>
+ </main>
+
+{% endblock %}
+

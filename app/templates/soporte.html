@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}contactanos{% endblock %}
+
+
+
+
+{% block content %}
+
+        <main>
+
+		<h1><del>¡HOLA!</del></h1>
+	<section>
+	<div class="container d-flex justify-content-center align-items-center">
+	   <div class="card text-center" style="width: 100%;">
+		<div class="card-body ">
+			    <h5 class="card-title">Atención al cliente</h5>
+			    <h6 class="card-subtitle mb-2 text-body-secondary">(o lo que sea)</h6>
+			    <p class="card-text"><p>Si por alguna razón inexplicable has logrado que este sitio funcione y necesitas ayuda, te sugiero que consultes el manual de usuario (que no existe). En caso de emergencia, puedes intentar comunicarte conmigo a través de los canales oficiales: Nomeimportas@gmail.com o el número no me llames 000002000. Tu mensaje será tratado con la máxima diligencia y archivado en la papelera de reciclaje más cercana. ¡Gracias por tu comprensión</p>
+                            <a href="#" class="card-link">Nomeimportas@gmail.com</a>
+                            <a href="#" class="card-link">000002000.</a>
+
+		</div>
+	  </div>
+	</div>
+	<a href="{% url 'index' %}" class="btn btn-primary">Ir al Home.</a>
+	</section>
+
+
+        </main>
+
+<!--en el value vamos a poner un identificador que nos va a servir para guardar los datos y tambien con la etiqueta <option> le agregamos contenido a la etiqueta <select>-->
+{% endblock %}
+
+
+                              
