@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('app.urls')),
     path('chat/',include('chat.urls')),
+    path('usuarios/',include('usuarios.urls')),
     ]
 
 

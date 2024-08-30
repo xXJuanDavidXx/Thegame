@@ -1,27 +1,30 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}      
+                               
+{% load static %}              
 
+{% block content %}            
+  
+<div class="container col-8">
+    <h2>{{ room.name }}</h2>
+    <h4>Bienvenido {{ request.user }}</h4>
+    <hr>
+    <div id="boxMessage"></div>
 
-{% block title %}Hola mundo{% endblock %}
-
-
-{% block content %}
-
-<div class="container mt-3">
-        <h2> chatea </h2>
-
-{% if error %}
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>{{ error }}</strong> Debe solicitar permiso para unirse..
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div id="Chat">
+        <input class="form-control" type="text" id="inputMessage">
+        <button class="btn btn-success mt-2" type="submit" id="btnMessage">Enviar</button>
+        <a class="btn btn-primary mt-2 float-end" href="{% url 'home' %}">Salir</a>
+    </div>
 </div>
-{% endif %}
 
-{% for room in rooms %}
+        <script>
+        var usuario = '{{ request.user }}'
+        var roomId = ' {{ room.id }} '
+        </script>
 
-<a class="btn btn-primary" href="{% url 'room' room.id %}">{{room.name}}</a>    <!--Recordar que el contexto se llama entre doble llave-->
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"> </script>
 
-{% endfor %}
+<script src="{% static 'js/chat.js' %}"></script>
 
 {% endblock %}
-</div>
 

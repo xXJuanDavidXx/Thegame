@@ -26,18 +26,18 @@
 		<li class="nav-item"><a class="nav-link text-light" href="{% url 'ayuda'%}">Ayuda</a></li>
 
 	        {% if user.is_authenticated %}
-               		 <li class="nav-item"><a class="nav-link text-light" href="/logout">Logout</a></li>
+		<li class="nav-item"><a class="nav-link text-light" href="{% url 'logout' %}">Logout</a></li>
             	{% else %}
                 
 			{% if current_page == 'login' %}
-                		<li class="nav-item"><a class="nav-link text-light" href="/signup">Signup</a></li>
+			<li class="nav-item"><a class="nav-link text-light" href="{% url 'signup' %}">Signup</a></li>
                 	
 			{% elif current_page == 'signup' %}
-                 		<li class="nav-item"><a class="nav-link text-light" href="/login">Login</a></li>
+			<li class="nav-item"><a class="nav-link text-light" href="{% url 'login' %}">Login</a></li>
                 
 		 	{% else %}
-                    		<li class="nav-item"><a class="nav-link text-light" href="/signup">Signup</a></li>
-                    		<li class="nav-item"><a class="nav-link text-light" href="/login">Login</a></li>
+			<li class="nav-item"><a class="nav-link text-light" href="{% url 'signup' %}">Signup</a></li>
+			<li class="nav-item"><a class="nav-link text-light" href="{% url 'login' %}">Login</a></li>
                 	{% endif %}
             	{% endif %}
 

@@ -7,7 +7,7 @@ from django.contrib.auth.models import User # importamos esto para guardar los d
 from django.contrib.auth import authenticate, login, logout # Para crear la cookie de usuario y para poder cerrar sesión
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
-from .forms import GameForm, Profile_img
+from .forms import GameForm, Profile_img #organizar en la app usuarios
 from django.contrib import messages
 
 
@@ -30,102 +30,6 @@ def search_view(request):
         results = Juego.objects.none()
     return render(request, 'search_results.html', {'results': results, 'query': query})
     
-
-
-
-#---pagina de registro
-
-def signup(request):
-    if request.method == 'GET':
-        return render(request, 'signup.html', {
-            "form": UserCreationForm,
-            'current_page': 'signup'
-            })
-    else:
-
-        if request.POST["password1"] == request.POST["password2"]:
-            try:
-                user = User.objects.create_user(
-                    request.POST["username"], password=request.POST["password1"])
-                user.save()
-                login(request, user)
-                return redirect('tu')
-            except IntegrityError:
-                return render(request, 'signup.html', {"form": UserCreationForm, "error": "Username already exists."})
-
-        return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
-
-
-
-#---pagina de loggeo
-
-def registro(request):
-    if request.method == 'GET':                   #validamos que la solicitud sea get para mostrar el login
-        return render(request, 'login.html', {
-            'form': AuthenticationForm,
-            'current_page': 'login'
-            })
-    else:                                         #aquí verificamos que el usuario y contraseña exista
-        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
-        if user is None:
-            return render(request, 'login.html', {
-                'form': AuthenticationForm,
-                "error": 'Usuario o contraseña incorrecta'   #va a devolver si no existe..
-            })
-        else:
-            login(request, user) #si el usuario y contraseña son correctos, iniciamos la cookie de sesión
-            return redirect('tu')
-
-
-        
-        
-
-
-
-
-#---cerrar sesión
-def singout(request):
-    logout(request)
-    return redirect('index')
-
-#---pagina del usuario---
-@login_required ##hace solo accesible a usuarios con sesión, si no los re dirige al login
-def tu(request):
-    try:
-        profile = request.user.profile
-    except Profile.DoesNotExist:
-        profile = Profile.objects.create(user=request.user)
-
-    return render(request,'me.html',{'profile':profile, 'user': request.user})
-
-@login_required 
-def editar(request):
-    try:
-        profile = request.user.profile
-    except Profile.DoesNotExist:
-        profile = Profile.objects.create(user=request.user)
-
-    if request.method == 'POST':
-        form = Profile_img(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            try:
-                archivo = request.FILES['profile_picture']
-                img_valida = ['.jpg', '.jpeg', '.png', '.gif']
-                if not any(archivo.name.lower().endswith(ext) for ext in img_valida):
-                    messages.error(request, 'Solo se permiten archivos de imagen con extensiones: .jpg, .jpeg, .png, .gif')
-                    return redirect('edit')
-            except KeyError:
-                # No se subió ninguna nueva imagen, así que no hacemos nada especial aquí.
-                pass
-
-            form.save()
-            messages.success(request, 'Imagen actualizada correctamente')
-            return redirect('edit')
-    else:
-        form = Profile_img(instance=profile)
-
-    return render(request, 'editar.html', {'form': form, 'profile': profile})
-
 
 
 #___Pagina para subir los indie---

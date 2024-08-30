@@ -7,20 +7,30 @@
 {% block content %}
 
 <div class="container mt-3">
-        <h2> chatea </h2>
+  <h2>Chatea</h2>
 
-{% if error %}
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>{{ error }}</strong> Debe solicitar permiso para unirse..
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  {% if error %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{ error }}</strong> Debe solicitar permiso para unirse.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endif %}
+
+  <div class="row">
+    {% for room in rooms %}
+    <div class="col-md-4 mb-4">
+      <div class="card" style="width: 100%;">
+        <img src="{{ room.img.url }}" alt="{{ room.name }}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ room.name }}</h5>
+          <a class="btn btn-primary" href="{% url 'room' room.id %}">Entra</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
-{% endif %}
 
-{% for room in rooms %}
-
-<a class="btn btn-primary" href="{% url 'room' room.id %}">{{room.name}}</a>    <!--Recordar que el contexto se llama entre doble llave-->
-
-{% endfor %}
 
 {% endblock %}
 </div>

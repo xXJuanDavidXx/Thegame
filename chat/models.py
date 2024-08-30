@@ -9,6 +9,7 @@ from django.contrib.auth.hashers import make_password, check_password
 #Creación de salas para la comunicación
 class Room(models.Model):      
     name = models.CharField(max_length=100, unique=True, verbose_name='nombre')
+    img = models.ImageField(upload_to='salas', default='default_image.jpg')
     users = models.ManyToManyField(User, related_name='rooms_joined', blank = True)
   
     def __str__(self):

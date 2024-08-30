@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'chat',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -146,6 +147,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/me/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'me'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'catalogolociones@gmail.com'
+EMAIL_HOST_PASSWORD = 'zueq vord wnkf iszp'
+
+DEFAULT_FROM_EMAIL = 'catalogolociones@gmail.com'
+
+
 
