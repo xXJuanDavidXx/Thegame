@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Solicitudes de Entrada para {{ room.name }}</h2>
+    <ul>
+    {% for user in requests %}
+        <li>{{ user.username }}
+            <form method="POST" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                <button type="submit" name="action" value="accept" class="btn btn-success">Aceptar</button>
+                <button type="submit" name="action" value="reject" class="btn btn-danger">Rechazar</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -5,7 +5,6 @@
 
 
 {% block content %}
-
 <div class="container mt-3">
   <h2>Chatea</h2>
 
@@ -24,6 +23,13 @@
         <div class="card-body">
           <h5 class="card-title">{{ room.name }}</h5>
           <a class="btn btn-primary" href="{% url 'room' room.id %}">Entra</a>
+
+          {% if request.user != room.creador and request.user not in room.users.all %}
+            <form method="POST" action="{% url 'request_to_join' room.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-warning mt-2">Solicitar Unirse</button>
+            </form>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -33,5 +39,4 @@
 
 
 {% endblock %}
-</div>
 

@@ -9,13 +9,27 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+	    <style>
+        /* Estilos para hacer que la tarjeta ocupe toda la pantalla */
+        .full-screen-card {
+            height: 100vh; /* Ocupa toda la altura de la ventana */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            width: 100%;
+            max-width: 600px; /* Puedes ajustar el ancho máximo de la tarjeta si lo deseas */
+        }
+    </style>
+
     <header class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="logo">Thegame</div>
             <nav>
                 <ul class="nav">
                     <li class="nav-item"><a class="nav-link text-light" href="{% url 'categorias' %}">Categorías</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'home' %}">Contáctanos</a></li>
+		    <li class="nav-item"><a class="nav-link text-light" href="{% url 'home' %}">Contáctanos</a></li>
                     <li class="nav-item"><a class="nav-link text-light" href="{% url 'ayuda'%}">Ayuda</a></li>
                     <li class="nav-item"><a class="nav-link text-light" href="{% url 'tu' %}">Entra</a></li>
                 </ul>
@@ -55,14 +69,36 @@
                 <div class="card h-100">
                     <img src="{% static 'img/Juegos_indie.jpg' %}" class="card-img-top" alt="Juegos Indie">
                     <div class="card-body">
-                        <p class="card-text">Encuentra juegos de desarroladores independientes que decidieron colocar su juego en nuestra plataforma.</p>
+                        <p class="card-text">Encuentra juegos de desarrolladores independientes que decidieron colocar su juego en nuestra plataforma.</p>
                         <a href="{% url 'indie' %}" class="btn btn-primary">Ir</a>
                     </div>
                 </div>
             </article>
 
 
-        </section>
+           <article class="col mb-4">
+                <div class="card text-white" style="width: 100%;">
+                    <h2 class="text-white"><strong>Chatea<strong></h2>
+                    <img src="{% static 'img/Juegos_indie.jpg' %}" class="card-img-top" alt="Juegos Indie">
+                    <div class="card-body">
+			    <p class="card-text">Juega juegos web subidos por los usuarios.</p>
+                        <a href="{% url 'listajuegos' %}" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
+            </article>
+           <article class="col mb-4">
+                <div class="card text-white" style="width: 100%;">
+                    <h2 class="text-white"><strong>Indie<strong></h2>
+                    <img src="{% static 'img/Juegos_indie.jpg' %}" class="card-img-top" alt="Juegos Indie">
+                    <div class="card-body">
+			    <p class="card-text">Unete y crea salas de chat de tus temas favoritos.</p>
+			    <a href="{% url 'home' %}" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
+            </article>
+
+
+
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

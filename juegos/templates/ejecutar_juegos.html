@@ -1,0 +1,16 @@
+{% extends 'base.html' %}%
+
+
+
+{% block content %}
+
+    <h1>{{ juego.nombre }}</h1>
+    <p>{{ juego.descripcion }}</p>
+    {% if juego.imagen %}
+        <img src="{{ juego.imagen.url }}" alt="{{ juego.nombre }}" style="max-width: 100%;">
+    {% endif %}
+    <script src="{{ juego.archivo_js.url }}"></script>
+
+
+{% endblock %}
+

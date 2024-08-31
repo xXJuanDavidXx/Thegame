@@ -12,6 +12,7 @@ urlpatterns = [
     path('soporte/', views.soporte, name='soporte'), 
     path('help/', views.ayuda, name='ayuda'), 
     path('buscar/', views.search_view, name='search_view'),
+    path('Juegos/', views.webOzip, name="juegos"),
     
 
     #    path('about/',views.About.as_view()),

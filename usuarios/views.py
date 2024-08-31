@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from .forms import SignUpForm
 from django.contrib.auth import authenticate, login, logout
-
+from app.forms import Profile_img
+from django.contrib import messages
 
 
 # Create your views here.

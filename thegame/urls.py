@@ -10,6 +10,7 @@ urlpatterns = [
     path('',include('app.urls')),
     path('chat/',include('chat.urls')),
     path('usuarios/',include('usuarios.urls')),
+    path('web/', include('juegos.urls')),
     ]
 
 

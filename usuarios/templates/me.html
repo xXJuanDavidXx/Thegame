@@ -6,36 +6,41 @@
 
 <main>
 
-<section>
-        <div class="text-center">
-            {% if profile.profile_picture %}
-                <img src="{{ profile.profile_picture.url }}" class="img-thumbnail mb-3" alt="Foto de Perfil">
-		<h3>{{ user.username }}</h3>
-            {% else %}
-                <p>No tienes una foto de perfil aún.</p>
-            {% endif %}
-        </div>	
-	
-	
-</section>
+    <section class="text-center">
+        {% if profile.profile_picture %}
+            <img src="{{ profile.profile_picture.url }}" class="avatar img-circle img-thumbnail mb-3" alt="Foto de Perfil">
+            <h3>{{ user.username }}</h3>
+        {% else %}
+            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+            <p>No tienes una foto de perfil aún.</p>
+        {% endif %}
+    </section>
 
- <div class="row p-3 mb-2 bg-dark text-white">
-      <section class="col-md-4 offset-md-4 mt-5  p-3 mb-2 bg-dark-subtle text-dark-emphasis">
-        <ul class="list-group">
-            <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold"  href="{% url 'index' %}" >Inicio</a></li>
-            <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold"  href="{% url 'upload' %}" >Subir Juegos</a></li>
-            <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold"  href="{% url 'mis_juegos' %}" >Juegos Subidos</a></li>
-	    <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold"  href="{% url 'edit' %}" >Editar perfil</a></li>
-        </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4" style="margin-top: 50px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Sitio Web <i class="fa fa-link fa-1x"></i></div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold" href="{% url 'index' %}">Inicio</a></li>
+                    <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold" href="{% url 'upload' %}">Subir Juegos</a></li>
+                    <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold" href="{% url 'mis_juegos' %}">Juegos Subidos</a></li>
+                    <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold" href="{% url 'edit' %}">Editar perfil</a></li>
+                    <li class="list-group-item text-bg-dark p-3"><a class="link-underline-dark fw-semibold" href="{% url 'mis_salas' %}">Mis salas</a></li>
+                </ul>
+            </div>
 
+             <div class="col-sm-8" style="margin-top: 50px;">
+                 <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Perfil</a></li>
+		    <li class="active"><a data-toggle="tab" href="#QuandasTOqueTeandoPuto"</a>Juegos que haces.</li>
 
-
-      </section>
- </div>
+                </ul>
+            </div>
+        </div>
+    </div>
 </main>
 
-
-
 {% endblock %}
-
 

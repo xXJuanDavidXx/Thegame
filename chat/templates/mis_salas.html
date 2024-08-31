@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Mis Salas de Chat</h2>
+    <ul>
+    {% for room in rooms %}
+        <li>
+            <h4>{{ room.name }}</h4>
+            <a class="btn btn-primary" href="{% url 'room' room.id %}">Entra a la sala</a>
+            <a class="btn btn-warning" href="{% url 'manage_requests' room.id %}">
+                Ver Solicitudes {% if room.pendientes.count > 0 %}<span class="badge bg-danger">{{ room.pendientes.count }}</span>{% endif %}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

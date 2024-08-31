@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<h1> Holaaa </h1>
+
+<div class="container">
+	
+	<button class="btn btn-secondary">
+		<a href="{% url 'upload' %}">Juego para descarga</a>
+	</button>
+
+	<button class="btn btn-primary">
+		<a href="{% url 'subir' %}">Juego Web </a>
+	</button>
+
+</div>
+
+
+{% endblock %}

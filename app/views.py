@@ -126,6 +126,16 @@ def ayuda(request):
  #   return HttpResponse("<h1>THEGAME {}</h1>".format(username)) #Lo que estamos haciendo aqui es concatenar el parametro que se espera recibir en el HttpResponse 
 
 
+### Web o descarga ###
+def webOzip(request):
+    return render(request, 'webOzip.html')
+    
+
+
+
+
+
+
 def my_view(request, *args, **kwargs):
     print(args)
     print(kwargs)
