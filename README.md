@@ -46,14 +46,16 @@ Este proyecto es una página web dedicada a los **videojuegos retro** y **juegos
 4. **Inicia el servidor de desarrollo:**
 
 Recuerda primeramente configurar el `ALLOW_HOSTS` en settings
-    ```bash
+   
+
+```bash
     python manage.py runserver
-    ```
+```
 
 5. **Iniciar un servidor redis para la cominicación websocket**
-```bash
+	```bash
    sudo docker run -d -p 6379:6379 --name redis redis 
-```
+	```
 
 
 ## 🚧 Estado del Proyecto
