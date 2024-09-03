@@ -6,17 +6,35 @@
 
 <h1> Holaaa </h1>
 
+<section>
+	<article>
 <div class="container">
 	
 	<button class="btn btn-secondary">
-		<a href="{% url 'upload' %}">Juego para descarga</a>
+		<a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'upload' %}">Juego para descarga</a>
 	</button>
 
-	<button class="btn btn-primary">
-		<a href="{% url 'subir' %}">Juego Web </a>
+	<button class="btn btn-light">
+		<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"  href="{% url 'subir' %}">Juego Web </a>
 	</button>
 
 </div>
+
+</article>
+<article>
+	
+	<hr>
+
+        <button class="btn btn-outline-success">
+                <a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'tu' %}">Vuelve a tu perfil.</a>
+        </button>
+
+
+</article>
+
+</section>
+
+
 
 
 {% endblock %}

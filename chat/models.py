@@ -18,3 +18,22 @@ class Room(models.Model):
         return self.name
 
 
+##Persistencia de los mensajes 
+class Mensajes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Usuario')
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, verbose_name='sala')
+    mensaje = models.TextField(verbose_name="Mensaje")
+    tiempo = models.DateTimeField(auto_now_add=True, verbose_name='Enviado')
+
+    def __str__(self):
+        return self.mensaje
+
+
+
+
+
+
+
+
+
+

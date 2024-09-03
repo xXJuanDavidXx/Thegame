@@ -9,7 +9,7 @@ from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 from .forms import GameForm, Profile_img #organizar en la app usuarios
 from django.contrib import messages
-
+from juegos.models import GamesWeb
 
 # Create your views here.
 
@@ -59,7 +59,11 @@ def indie(request):
 #@login_required
 def mis_juegos(request):
     juegos_usuario = JuegoIndie.objects.filter(desarrollador=request.user)
-    return render(request, 'mis_juegos.html', {'juegos_usuario': juegos_usuario})
+    juegos_web = GamesWeb.objects.filter(usuario=request.user)
+    return render(request, 'mis_juegos.html', {
+        'juegos_usuario': juegos_usuario,
+        'juegos_web': juegos_web,
+        })
 
 
 def lista_indie(request):

@@ -2,6 +2,8 @@ from channels.generic.websocket import WebsocketConsumer
 import json
 from asgiref.sync import async_to_sync
 from django.utils import timezone
+from .models import Mensajes
+
 
 class MyConsumer(WebsocketConsumer):
 
@@ -28,6 +30,12 @@ class MyConsumer(WebsocketConsumer):
                 sender_id = None
 
             if sender_id:
+                #Grabar el mensaje
+                message_save = Mensajes.object.create(user_id=sender_id, room_id=self.id, message=message)
+                message_save.save()
+
+
+                #Sincronizamos y enviamos el mensaje a la sala
                 async_to_sync(self.channel_layer.group_send)(
                     self.room_group_name,
                     {

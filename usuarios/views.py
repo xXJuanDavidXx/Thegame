@@ -8,6 +8,7 @@ from .forms import SignUpForm
 from django.contrib.auth import authenticate, login, logout
 from app.forms import Profile_img
 from django.contrib import messages
+from app.models import Consola, JuegoIndie, Profile, Juego
 
 
 # Create your views here.

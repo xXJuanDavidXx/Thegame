@@ -29,6 +29,37 @@
         <p>No has subido ningún juego aún.</p>
     {% endif %}
     
+
+	<hr>
+
+	<h1> Tus Juegos Web <h1>
+
+    {% if juegos_web %}
+        <div class="game-list">
+          <div class="row">
+            {% for juego in juegos_web %}
+                <div class="col-md-4 mb-4">
+                  <div class="card" style="width: 100%;">
+                    {% if juego.imagen %}              
+                        <img src="{{ juego.imagen.url }}" alt="{{ juego.titulo }} Imagen">
+                    {% endif %}
+                    <div class="card-body">         
+                    <h2>{{ juego.nombre }}</h2>     
+                    <p>{{ juego.descripcion }}</p>  
+                    </div>     
+                  </div>
+                </div>
+            {% endfor %}
+            </div>
+         </div>
+    {% else %}
+        <p>No has subido ningún juego aún.</p>
+    {% endif %}
+
+
+
+
+
     <p><a href="{% url 'tu' %}" class="btn btn-primary">Volver al perfil</a></p>
 
 

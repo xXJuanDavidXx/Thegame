@@ -29,9 +29,9 @@
             <nav>
                 <ul class="nav">
                     <li class="nav-item"><a class="nav-link text-light" href="{% url 'categorias' %}">Categorías</a></li>
-		    <li class="nav-item"><a class="nav-link text-light" href="{% url 'home' %}">Contáctanos</a></li>
+		    <li class="nav-item"><a class="nav-link text-light" href="{% url 'soporte' %}">Contáctanos</a></li>
                     <li class="nav-item"><a class="nav-link text-light" href="{% url 'ayuda'%}">Ayuda</a></li>
-                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'tu' %}">Entra</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="{% url 'tu' %}">Ingresa</a></li>
                 </ul>
             </nav>
         </div>
@@ -78,8 +78,8 @@
 
            <article class="col mb-4">
                 <div class="card text-white" style="width: 100%;">
-                    <h2 class="text-white"><strong>Chatea<strong></h2>
-                    <img src="{% static 'img/Juegos_indie.jpg' %}" class="card-img-top" alt="Juegos Indie">
+                    <h2 class="text-white"><strong>Juega en la web<strong></h2>
+                    <img src="{% static 'img/WEWEWEB.jpg' %}" class="card-img-top" alt="Juegos Indie">
                     <div class="card-body">
 			    <p class="card-text">Juega juegos web subidos por los usuarios.</p>
                         <a href="{% url 'listajuegos' %}" class="btn btn-primary">Ir</a>
@@ -88,8 +88,8 @@
             </article>
            <article class="col mb-4">
                 <div class="card text-white" style="width: 100%;">
-                    <h2 class="text-white"><strong>Indie<strong></h2>
-                    <img src="{% static 'img/Juegos_indie.jpg' %}" class="card-img-top" alt="Juegos Indie">
+                    <h2 class="text-white"><strong>Chatea<strong></h2>
+                    <img src="{% static 'img/DISCORD.jpg' %}" class="card-img-top" alt="Juegos Indie">
                     <div class="card-body">
 			    <p class="card-text">Unete y crea salas de chat de tus temas favoritos.</p>
 			    <a href="{% url 'home' %}" class="btn btn-primary">Ir</a>
