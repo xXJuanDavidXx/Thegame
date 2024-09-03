@@ -50,6 +50,12 @@ Recuerda primeramente configurar el `ALLOW_HOSTS` en settings
     python manage.py runserver
     ```
 
+5. **Iniciar un servidor redis para la cominicación websocket**
+```bash
+   sudo docker run -d -p 6379:6379 --name redis redis 
+```
+
+
 ## 🚧 Estado del Proyecto
 
 Actualmente, el proyecto está en desarrollo activo. Planeo agregar nuevas características como:
