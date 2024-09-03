@@ -34,6 +34,10 @@ $(function() {
             </div>
         </div>
         `;
+
+    // Desplazarse automáticamente hacia abajo cuando se agregan nuevos mensajes
+    var boxMessage = document.querySelector('#boxMessage');
+    boxMessage.scrollTop = boxMessage.scrollHeight;
     };
 
     // Configurando el evento de enviar la información ya sea por click o presionando la tecla enter
@@ -61,29 +65,26 @@ $(function() {
     }
 
     // Cómo se muestra el mensaje que envió el usuario
-    function loadMessageHTML(m) {
-	const dateObject = new Date()
-	const año = dateObject.getUTCFullYear()
-	const mes = dateObject.getMonth() + 1
-	const dia = dateObject.getDay()
-	const hora = dateObject.getHours()
-	const minutos = dateObject.getMinutes()
-	const segundos = dateObject.getSeconds()
+function loadMessageHTML(m) {
+    const dateObject = new Date();
+    const año = dateObject.getFullYear();
+    const mes = String(dateObject.getMonth() + 1).padStart(2, '0');
+    const dia = String(dateObject.getDate()).padStart(2, '0');
+    const hora = String(dateObject.getHours()).padStart(2, '0');
+    const minutos = String(dateObject.getMinutes()).padStart(2, '0');
+    const segundos = String(dateObject.getSeconds()).padStart(2, '0');
 
-	const formatofecha = `${año}-${mes}-${dia} ${hora}:${minutos}:${segundos}`
+    const formatofecha = `${año}-${mes}-${dia} ${hora}:${minutos}:${segundos}`;
 
-
-        document.querySelector('#boxMessage').innerHTML +=
-        `
-        <div class="alert alert-primary" role="alert">
-            ${m}
-            <div>
-                <small class="fst-italic fw-bold"> ${usuario} </small>
-                <small class="float-end">${formatofecha}</small>
-            </div>
+    document.querySelector('#boxMessage').innerHTML +=
+    `
+    <div class="alert alert-primary" role="alert">
+        ${m}
+        <div>
+            <small class="fst-italic fw-bold"> ${usuario} </small>
+            <small class="float-end">${formatofecha}</small>
         </div>
-        `;
-    }
-
-});
+    </div>
+    `;
+}
 

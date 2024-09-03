@@ -31,7 +31,7 @@ class MyConsumer(WebsocketConsumer):
 
             if sender_id:
                 #Grabar el mensaje
-                message_save = Mensajes.object.create(user_id=sender_id, room_id=self.id, message=message)
+                message_save = Mensajes.objects.create(user_id=sender_id, room_id=self.id, mensaje=message)
                 message_save.save()
 
 

@@ -4,11 +4,21 @@
 
 {% block content %}            
   
-<div class="container col-8">
-    <h2>{{ room.name }}</h2>
+
+<div class="container col-8 d-flex flex-column" style="height: 500px;">  
+    <h2>{{ room.name }}</h2>   
     <h4>Bienvenido {{ request.user }}</h4>
-    <hr>
-    <div id="boxMessage"></div>
+    <div id="boxMessage" style="height: 300px; overflow-y: auto;">
+        {% for mensaje in mensajes %}
+        <div class="alert alert-success" role="alert">
+            {{ mensaje.mensaje }}
+            <div>
+                <small class="fst-italic fw-bold">{{ mensaje.user.username }}</small>
+                <small class="float-end">{{ mensaje.tiempo }}</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
     <div id="Chat">
         <input class="form-control" type="text" id="inputMessage">
@@ -17,13 +27,50 @@
     </div>
 </div>
 
-        <script>
-        var usuario = '{{ request.user }}'
-        var roomId = ' {{ room.id }} '
-        </script>
+<script>
+    var usuario = '{{ request.user }}';
+    var roomId = '{{ room.id }}';
 
-<script src="{% static 'js/jquery-3.7.1.min.js' %}"> </script>
+    // Función para desplazar automáticamente hacia abajo
+    function scrollToBottom() {
+        var boxMessage = document.getElementById('boxMessage');
+        boxMessage.scrollTop = boxMessage.scrollHeight;
+    }
 
+    document.addEventListener("DOMContentLoaded", function() {
+        scrollToBottom();
+    });
+
+    // WebSocket code
+    var url = 'ws://' + window.location.host + '/ws/room/' + roomId + '/';
+    var chatSocket = new WebSocket(url);
+
+    chatSocket.onmessage = function(data) {
+        const datamsj = JSON.parse(data.data);
+        var msj = datamsj.message;
+        var username = datamsj.username;
+        var datetime = datamsj.datetime;
+
+        document.querySelector('#boxMessage').innerHTML +=
+        `
+        <div class="alert alert-success" role="alert">
+            ${msj}
+            <div>
+                <small class="fst-italic fw-bold"> ${username} </small>
+                <small class="float-end">${datetime}</small>
+            </div>
+        </div>
+        `;
+
+        // Desplazar hacia abajo después de agregar un nuevo mensaje
+        scrollToBottom();
+    };
+
+    // Código restante de WebSocket
+</script>
+
+
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
 <script src="{% static 'js/chat.js' %}"></script>
 
 {% endblock %}
