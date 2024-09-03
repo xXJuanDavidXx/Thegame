@@ -8,8 +8,7 @@ Este proyecto es una página web dedicada a los **videojuegos retro** y **juegos
 
 - **Catálogo de Juegos Retro**: Navega por una colección de juegos de consolas retro como NES, SNES, Sega Genesis, entre otros.
 - **Juegos Indie**: Descubre y juega a títulos indie únicos creados por desarrolladores independientes.
-- **Perfil de Usuario**: Los usuarios pueden crear un perfil, agregar sus juegos favoritos y dejar reseñas.
-- **Sistema de Comentarios y Likes**: Interactúa con la comunidad dejando comentarios y dando likes a tus juegos preferidos.
+- **Perfil de Usuario**: Los usuarios pueden crear un perfil.
 - **Upload de Juegos Indie**: Los desarrolladores pueden subir sus propios juegos indie para que la comunidad los descubra.
 - **Salas de Chat Temáticas**: Únete a conversaciones en tiempo real sobre tus juegos y consolas favoritas en nuestras salas de chat.
 
