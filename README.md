@@ -59,7 +59,7 @@ Recuerda primeramente configurar el `ALLOW_HOSTS` en settings
 
 ## 🚧 Estado del Proyecto
 
-Actualmente, el proyecto está en desarrollo activo. Planeo agregar nuevas características como:
+Actualmente el desarrollo del proyecto se encuentra detenido.
 
 - **Implementación de juegos web con js** para juegos indie.
 
